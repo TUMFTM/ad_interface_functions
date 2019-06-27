@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='ad-interface-functions',
-    version='0.11',
+    version='0.12',
     author="Alexander Heilmeier, Tim Stahl",
     author_email="alexander.heilmeier@tum.de, stahl@ftm.mw.tum.de",
     description="Interface functions used in the autonomous driving stack at TUM/FTM",
