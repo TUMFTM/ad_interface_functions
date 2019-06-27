@@ -6,7 +6,19 @@ def zmq_import_poll(sock: zmq.Socket, timeout: float):
     Created by:
     Alexander Heilmeier
 
-    Documentation: Receives pyobj data via ZMQ and allows polling.
+    Documentation:
+    Handles incoming ZMQ messages and allows polling.
+
+    Inputs:
+    sock:       ZMQ socket (see below how to create it)
+    timeout:    [s] timeout for polling
+
+    How to create a ZMQ socket to import data?
+    import zmq
+    zmq_context = zmq.Context()
+    sock = zmq_context.socket(zmq.PUB)
+    sock.connect("tcp://%s:%s" % (ip, port))
+    sock.setsockopt_string(zmq.SUBSCRIBE, zmq_topic])
     """
 
     # ------------------------------------------------------------------------------------------------------------------

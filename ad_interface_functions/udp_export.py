@@ -6,7 +6,17 @@ def udp_export(sock: socket.socket, ip: str, port: int, data_b: bytes):
     Created by:
     Alexander Heilmeier
 
-    Documentation: Export data via UDP. Data input must by a bytes object.
+    Documentation: Export data via UDP.
+
+    Inputs:
+    sock:       UDP socket (see below how to create it)
+    ip:         IP address of desired receiver
+    port:       port number of desired receiver
+    data_b:     data to send (must be a bytes object, e.g. by using struct.pack or np.tobytes)
+
+    How to create a UDP socket to export data?
+    import socket
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     """
 
     # ------------------------------------------------------------------------------------------------------------------

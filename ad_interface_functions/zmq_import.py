@@ -8,6 +8,21 @@ def zmq_import(sock: zmq.Socket, blocking: bool = False, datatype: str = "pyobj"
 
     Documentation:
     Handles incoming ZMQ messages.
+
+    Inputs:
+    sock:       ZMQ socket (see below how to create it)
+    blocking:   set if socket should be blocking (i.e. wait until new message is received) or not
+    datatype:   string that indicates if it should be received as Python object (pyobj), json (json) or string (str)
+
+    Hint: Conversion of json objects to their original data type is handled by PyZMQ and therefore must not be done by
+    hand.
+
+    How to create a ZMQ socket to import data?
+    import zmq
+    zmq_context = zmq.Context()
+    sock = zmq_context.socket(zmq.PUB)
+    sock.connect("tcp://%s:%s" % (ip, port))
+    sock.setsockopt_string(zmq.SUBSCRIBE, zmq_topic])
     """
 
     # ------------------------------------------------------------------------------------------------------------------

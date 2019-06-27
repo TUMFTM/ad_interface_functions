@@ -8,8 +8,18 @@ def udp_import(sock: socket.socket, data_size: int, use_buffer: bool = False) ->
     Alexander Heilmeier
 
     Documentation:
-    Import data via UDP. data_size in bytes! use_buffer flag can be used to return the complete buffer instead of just
-    returning the latest message.
+    Import data via UDP.
+
+    Inputs:
+    sock:           UDP socket (see below how to create it)
+    data_size:      data size per message in byte (not bit!)
+    use_buffer:     flag to show if the buffer should be returned completely (True) or only the newest message (False)
+
+    How to create a UDP socket to import data?
+    import socket
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind((own_external_ip, listening_port))
+    sock.setblocking(False)
     """
 
     # ------------------------------------------------------------------------------------------------------------------
