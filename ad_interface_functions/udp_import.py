@@ -2,7 +2,7 @@ import socket
 from typing import Union
 
 
-def udp_import(sock: socket.socket, data_size: int, use_buffer: bool = False) -> Union[bytes, list]:
+def udp_import(sock: socket.socket, data_size: int, use_buffer: bool = False) -> Union[bytes, list, None]:
     """
     Created by:
     Alexander Heilmeier
@@ -39,8 +39,10 @@ def udp_import(sock: socket.socket, data_size: int, use_buffer: bool = False) ->
     except socket.error:
         pass
 
-    if use_buffer:
+    if use_buffer and buffer:
         return buffer
+    elif use_buffer:
+        return None
     else:
         return data_b
 
