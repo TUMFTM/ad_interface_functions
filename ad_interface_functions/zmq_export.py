@@ -3,10 +3,10 @@ import zmq
 
 def zmq_export(sock: zmq.Socket, topic: str, data, datatype: str = "pyobj"):
     """
-    Created by:
+    Author:
     Alexander Heilmeier & Tim Stahl
 
-    Documentation:
+    Description:
     Sends data via ZMQ.
 
     Inputs:

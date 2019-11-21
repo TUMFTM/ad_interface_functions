@@ -3,10 +3,11 @@ import socket
 
 def udp_export(sock: socket.socket, ip: str, port: int, data_b: bytes):
     """"
-    Created by:
+    Author:
     Alexander Heilmeier
 
-    Documentation: Export data via UDP.
+    Description:
+    Export data via UDP.
 
     Inputs:
     sock:       UDP socket (see below how to create it)

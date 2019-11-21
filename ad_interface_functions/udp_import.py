@@ -4,10 +4,10 @@ from typing import Union
 
 def udp_import(sock: socket.socket, data_size: int, use_buffer: bool = False) -> Union[bytes, list, None]:
     """
-    Created by:
+    Author:
     Alexander Heilmeier
 
-    Documentation:
+    Description:
     Import data via UDP.
 
     Inputs:

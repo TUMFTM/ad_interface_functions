@@ -3,10 +3,10 @@ import zmq
 
 def zmq_import(sock: zmq.Socket, blocking: bool = False, datatype: str = "pyobj"):
     """
-    Created by:
+    Author:
     Alexander Heilmeier & Tim Stahl
 
-    Documentation:
+    Description:
     Handles incoming ZMQ messages.
 
     Inputs:

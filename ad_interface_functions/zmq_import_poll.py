@@ -3,10 +3,10 @@ import zmq
 
 def zmq_import_poll(sock: zmq.Socket, timeout: float):
     """
-    Created by:
+    Author:
     Alexander Heilmeier
 
-    Documentation:
+    Description:
     Handles incoming ZMQ messages and allows polling.
 
     Inputs:
