@@ -1,7 +1,7 @@
 import zmq
 
 
-def zmq_import(sock: zmq.Socket, blocking: bool = False, datatype: str = "pyobj"):
+def zmq_import(sock: zmq.Socket, blocking: bool = False, datatype: str = "pyobj", use_buffer: bool = False):
     """
     Author:
     Alexander Heilmeier & Tim Stahl
@@ -13,6 +13,7 @@ def zmq_import(sock: zmq.Socket, blocking: bool = False, datatype: str = "pyobj"
     sock:       ZMQ socket (see below how to create it)
     blocking:   set if socket should be blocking (i.e. wait until new message is received) or not
     datatype:   string that indicates if it should be received as Python object (pyobj), json (json) or string (str)
+    use_buffer: flag to indicate if the buffer should be returned completely (True) or only the latest message (False)
 
     Hint: Conversion of json objects to their original data type is handled by PyZMQ and therefore must not be done by
     hand.
@@ -43,21 +44,36 @@ def zmq_import(sock: zmq.Socket, blocking: bool = False, datatype: str = "pyobj"
     # ------------------------------------------------------------------------------------------------------------------
 
     data = None
+    buffer = []
 
     # non blocking socket to empty buffer
     try:
         while True:
             sock.recv_string(flags=zmq.NOBLOCK)
             data = sock_recv_fct(flags=zmq.NOBLOCK)
+
+            if use_buffer:
+                buffer.append(data)
+
     except zmq.Again:
         pass
 
     # if no data was received above and blocking is True, wait for new data
-    if data is None and blocking:
+    if blocking and not use_buffer and data is None:
         sock.recv_string()
         data = sock_recv_fct()
 
-    return data
+    elif blocking and use_buffer and not buffer:
+        sock.recv_string()
+        data = sock_recv_fct()
+        buffer.append(data)
+
+    if use_buffer and buffer:
+        return buffer
+    elif use_buffer:
+        return None
+    else:
+        return data
 
 
 # testing --------------------------------------------------------------------------------------------------------------
