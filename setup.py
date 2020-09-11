@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='ad-interface-functions',
-    version='0.20',
+    version='0.21',
     url='https://www.ftm.mw.tum.de/en/main-research/vehicle-dynamics-and-control-systems/roborace-autonomous-motorsport/',
     author="Alexander Heilmeier, Tim Stahl",
     author_email="alexander.heilmeier@tum.de, stahl@ftm.mw.tum.de",
@@ -20,7 +20,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(),
     install_requires=[
-        'pyzmq==19.0.1'
+        'pyzmq==19.0.2'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
