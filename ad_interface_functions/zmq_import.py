@@ -37,7 +37,7 @@ def zmq_import(sock: zmq.Socket, blocking: bool = False, datatype: str = "pyobj"
     elif datatype == "str":
         sock_recv_fct = lambda **kwargs: sock.recv_string(**kwargs)
     else:
-        raise ValueError("Specified datatype is not supported!")
+        raise RuntimeError("Specified datatype is not supported!")
 
     # ------------------------------------------------------------------------------------------------------------------
     # FUNCTION BODY ----------------------------------------------------------------------------------------------------

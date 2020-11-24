@@ -38,7 +38,7 @@ def zmq_export(sock: zmq.Socket, topic: str, data, datatype: str = "pyobj"):
     elif datatype == "str":
         sock.send_string(data)
     else:
-        raise ValueError("Specified datatype is not supported!")
+        raise RuntimeError("Specified datatype is not supported!")
 
 
 # testing --------------------------------------------------------------------------------------------------------------
